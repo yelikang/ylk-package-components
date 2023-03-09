@@ -1,13 +1,13 @@
 {
   "name": "ylk-package-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "dev": "webpack serve --config ./build/webpack.dev.js",
     "components": "webpack --config ./build/webpack.components.js",
     "common": "webpack --config ./build/webpack.common.js",
-    "all":"npm run components && npm run common"
+    "all": "npm run components && npm run common"
   },
   "keywords": [],
   "author": "",
