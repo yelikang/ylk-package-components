@@ -7,12 +7,15 @@
 </template>
 
 <script>
-// import {CInput, CSelect} from 'lib'
-// console.log('CInput', CInput)
+import {CInput, CSelect} from 'lib'
+import 'lib/theme/c-input.css'
+import 'lib/theme/c-select.css'
+
+console.log('CInput', CInput)
 export default {
     components:{
-        // CInput,
-        // CSelect
+        CInput,
+        CSelect
     }
 }
 </script>

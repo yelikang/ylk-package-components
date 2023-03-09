@@ -23,7 +23,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
         new HtmlWebpackPlugin({
             template: path.resolve('public/index.html'),
             filename: 'index.html',
-            title:'组件库'
+            title: '组件库'
         })
     ],
     module: {
@@ -31,7 +31,14 @@ let devWebpackConfig = merge(baseWebpackConfig, {
             sourceMap: config.dev.cssSourceMap,
             usePostCSS: true
         })
-    }
+    },
+    resolve: {
+        alias: {
+            '@': path.resolve('src'),
+            'lib': path.resolve('lib'),
+            'packages': path.resolve('packages')
+        }
+    },
 })
 
 module.exports = new Promise((resolve, reject) => {

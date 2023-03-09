@@ -3,9 +3,12 @@ const pkg = require('../package.json')
 
 import CInput from './c-input'
 import CSelect from './c-select'
+import CText from './c-text'
+
 const components = {
     CInput,
-    CSelect
+    CSelect,
+    CText
 }
 
 

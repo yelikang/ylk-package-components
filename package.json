@@ -1,14 +1,13 @@
 {
-  "name": "ylk-components",
+  "name": "ylk-package-components",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "base": "webpack serve --config ./build/webpack.dev.js",
-    "dev":"npm run base  --env=dev",
-    "build":"npm run base  --env=build",
+    "dev": "webpack serve --config ./build/webpack.dev.js",
     "components": "webpack --config ./build/webpack.components.js",
-    "common": "webpack --config ./build/webpack.common.js"
+    "common": "webpack --config ./build/webpack.common.js",
+    "all":"npm run components && npm run common"
   },
   "keywords": [],
   "author": "",
@@ -41,5 +40,8 @@
   },
   "dependencies": {
     "vue": "^2.7.14"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
