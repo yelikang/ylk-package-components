@@ -1,5 +1,6 @@
 <template>
   <div class="select">
+    select组件
     <select>
       <option value="1">1</option>
       <option value="2">2</option>

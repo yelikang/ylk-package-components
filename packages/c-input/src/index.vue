@@ -1,5 +1,6 @@
 <template>
   <div class="input">
+    input组件
     <input />
   </div>
 </template>
