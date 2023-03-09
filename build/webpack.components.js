@@ -10,7 +10,8 @@ module.exports = merge(baseWebpackConfig, {
     entry: {
         // 组件重命名判断
         'c-input': './packages/c-input',
-        'c-select': './packages/c-select'
+        'c-select': './packages/c-select',
+        'c-text': './packages/c-text'
     },
     output: {
         // 单个组件输出到lib目录
