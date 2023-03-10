@@ -7,12 +7,7 @@ const config = require('../config');
 
 module.exports = merge(baseWebpackConfig, {
     mode: 'production',
-    entry: {
-        // 组件重命名判断
-        'c-input': './packages/c-input',
-        'c-select': './packages/c-select',
-        'c-text': './packages/c-text'
-    },
+    entry: utils.getComponentEntrys('../packages'),
     output: {
         // 单个组件输出到lib目录
         path: path.resolve(__dirname, '../lib'),

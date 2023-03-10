@@ -3,7 +3,7 @@ const path = require('path')
 const config = require('../config')
 const packageConfig = require('../package.json')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const fs = require('fs')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -31,7 +31,7 @@ exports.cssLoaders = function (options) {
   }
 
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders(loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
@@ -61,7 +61,7 @@ exports.cssLoaders = function (options) {
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
-    less: generateLoaders('less', {lessOptions:{javascriptEnabled: true, math:0}}),
+    less: generateLoaders('less', { lessOptions: { javascriptEnabled: true, math: 0 } }),
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
@@ -100,4 +100,35 @@ exports.createNotifierCallback = () => {
       subtitle: filename || ''
     })
   }
+}
+
+exports.getComponentEntrys = (baseDir) => {
+  const entryObj = {}
+  const getEntry = (dir) => {
+    const _path = path.resolve(__dirname, dir)
+    const entrys = fs.readdirSync(_path)
+    const newEntry = entrys.filter(entry => {
+      // 文件不作为入口
+      return !~entry.indexOf('.')
+    })
+
+    newEntry.forEach((key) => {
+      if (entryObj[key]) {
+        throw new Error('存在重名组件:[' + key + ']')
+        return
+      }
+      entryObj[key] = path.join(_path, key)
+    })
+  }
+
+
+  if (Object.prototype.toString.call(baseDir) === '[object Array]') {
+    // 多条产品线入口
+    baseDir.forEach(dir => {
+      getEntry(dir)
+    })
+  } else {
+    getEntry(baseDir)
+  }
+  return entryObj
 }
